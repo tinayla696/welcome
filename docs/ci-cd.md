@@ -19,10 +19,10 @@ on:
   push:
     branches:
       - main
-  workflow_dispatch: # 手動実行も可能
+  workflow_dispatch:
 
 permissions:
-  contents: write # gh-pagesブランチへのpush権限を付与
+  contents: write
 
 jobs:
   deploy:
@@ -36,13 +36,23 @@ jobs:
         with:
           python-version: '3.x'
 
+      # キャッシュのステップを追加
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
       - name: Install dependencies
         run: |
-          pip install mkdocs mkdocs-material
+          # requirements.txt からインストールするよう変更
+          pip install -r requirements.txt
 
       - name: Build and Deploy to GitHub Pages
         run: |
-          mkdocs build
+          # 'mkdocs build' は gh-deploy が自動で行うため不要
           mkdocs gh-deploy --force
 ```
 
@@ -69,7 +79,8 @@ name: Sync Subtree Repositories
 
 on:
   schedule:
-    - cron: '0 3 * * *' # 毎日午前3時に実行
+    # 毎日午前3時に実行
+    - cron: '0 3 * * *'
   workflow_dispatch: # 手動実行も可能
 
 jobs:
@@ -88,6 +99,7 @@ jobs:
 
       - name: Sync child repositories
         run: |
+          # 子リポジトリ一覧（prefixとURLを定義）
           declare -A repos=(
             ["app1"]="https://github.com/org/app1-repo.git"
             ["app2"]="https://github.com/org/app2-repo.git"
@@ -108,10 +120,10 @@ jobs:
 
 ### ポイント
 
-MkDocsデプロイ：mkdocs gh-deployでGitHub Pagesに公開。
-Subtree同期：git subtree pullで子リポジトリを親に取り込み。
-複数子リポジトリ対応：declare -A reposで管理。
-定期実行：cronで自動化、workflow_dispatchで手動実行も可能。
+- MkDocsデプロイ：mkdocs gh-deployでGitHub Pagesに公開。  
+- Subtree同期：git subtree pullで子リポジトリを親に取り込み。  
+- 複数子リポジトリ対応：declare -A reposで管理。  
+- 定期実行：cronで自動化、workflow_dispatchで手動実行も可能。  
 
 ---
 

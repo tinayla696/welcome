@@ -21,7 +21,7 @@
   - 独立管理
   - 親リポジトリにコードを同期
 
-詳細は architecture.md を参照。
+[詳細は architecture.md を参照。](architecture.md)
 
 ---
 
@@ -29,7 +29,7 @@
 - MkDocs → GitHub Pagesに自動デプロイ
 - 子リポジトリ更新 → 親リポジトリに自動反映（GitHub Actions）
 
-詳細は ci-cd.md を参照。
+[詳細は ci-cd.md を参照。](ci-cd.md)
 
 ---
 
@@ -41,4 +41,4 @@
   - 緊急対応：`hotfix/****`
 - リポジトリ命名規則
 
-詳細は rules.md を参照。
+[詳細は rules.md を参照。](rules.md)

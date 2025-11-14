@@ -2,8 +2,10 @@
 
 ## 概要
 本プロジェクトは、GitHub Organizationを基盤とし、親子リポジトリ構成を採用します。  
-親リポジトリはプロジェクト単位で管理し、複数の子リポジトリ（アプリケーションやモジュール）を **Git Subtree** により取り込みます。  
-CI/CDは **GitHub Actions** を利用し、MkDocsによるドキュメント自動デプロイと子リポジトリ同期を実現します。
+親リポジトリはプロジェクト単位で管理し、  
+複数の子リポジトリ（アプリケーションやモジュール）を **Git Subtree** により取り込みます。  
+CI/CDは **GitHub Actions** を利用し、  
+MkDocsによるドキュメント自動デプロイと子リポジトリ同期を実現します。
 
 ---
 
@@ -75,3 +77,11 @@ team-a/vehicle-system/data_logger_go
    - 親リポジトリの `docs/` → GitHub Actions → GitHub Pages。
 2. **子リポジトリ同期**  
    - GitHub Actionsで `git subtree pull` を定期実行。
+
+---
+
+## 関連ページ
+
+- [index.md](index.md): ウェルカムページと概要。
+- [ci-cd.md](ci-cd.md): CI/CDフローの詳細。
+- [rules.md](rules.md): ブランチ戦略・命名規則の詳細。

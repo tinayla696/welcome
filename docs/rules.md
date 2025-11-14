@@ -38,9 +38,10 @@ hotfix/security-patch
 ## 3. リポジトリ命名規則
 
 **意味:**
-- `<your-id>`: 開発者やチームの識別子。
-- `<parent-repo>`: プロジェクト単位の親リポジトリ名。
-- `<children-repo>`: アプリケーションやモジュール単位の子リポジトリ名。
+
+- `<your-id>`: 開発者やチームの識別子。  
+- `<parent-repo>`: プロジェクト単位の親リポジトリ名。  
+- `<children-repo>`: アプリケーションやモジュール単位の子リポジトリ名。  
 
 **例:**
 
@@ -66,3 +67,10 @@ team-a/vehicle-system/data_logger_go
 ## 5. コードレビューの基本方針
 - 可読性、保守性、セキュリティを重視。
 - コメントは具体的かつ建設的に。
+
+---
+
+## 関連ページ
+
+- [architecture.md](architecture.md): 親子リポジトリ構成の詳細。
+- [ci-cd.md](ci-cd.md): CI/CDフローの詳細。
