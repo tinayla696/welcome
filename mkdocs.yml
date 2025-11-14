@@ -1,10 +1,7 @@
 site_name: Organization Welcome
 
 theme:
-  name: material
-  palette:
-    primary: 'blue'
-    accent: 'light blue'
+  name: 'material'
   language: 'ja'
 
 plugins:
