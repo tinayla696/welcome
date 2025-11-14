@@ -1,0 +1,8 @@
+site_name: Organization Welcome
+nav:
+  - Home: index.md
+  - Architecture: architecture.md
+  - CI/CD: ci-cd.md
+  - Rules: rules.md
+theme:
+  name: material
