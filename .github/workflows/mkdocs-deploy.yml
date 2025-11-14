@@ -28,4 +28,4 @@ jobs:
       - name: Build and Deploy to GitHub Pages
         run: |
           mkdocs build
-          mkdocs gh-pages --force
+          mkdocs gh-deploy --force
