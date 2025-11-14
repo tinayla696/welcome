@@ -11,7 +11,7 @@
 - 親リポジトリの `docs/` ディレクトリを MkDocsでビルド。
 - GitHub Pagesに自動デプロイ。
 
-### ワークフロー例
+### 修正版ワークフロー例
 ```yaml
 name: Deploy MkDocs to GitHub Pages
 
@@ -19,6 +19,10 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch: # 手動実行も可能
+
+permissions:
+  contents: write # gh-pagesブランチへのpush権限を付与
 
 jobs:
   deploy:
@@ -36,10 +40,18 @@ jobs:
         run: |
           pip install mkdocs mkdocs-material
 
-      - name: Build and Deploy
+      - name: Build and Deploy to GitHub Pages
         run: |
           mkdocs build
+          mkdocs gh-deploy --force
 ```
+
+### GitHub Pages設定
+
+- Settings -> Pages -> Build and deployment
+  - Source: Deploy from a branch
+  - Branch: gh-pages
+  - Folder: /(root)
 
 ---
 
@@ -47,10 +59,11 @@ jobs:
 
 ### 概要
 
-- 複数の子リポジトリを親リポジトリに取り込み。
-- 定期的に同期することで、親リポジトリを最新状態に保つ。
+- 複数の子リポジトリを親リポジトリに取り込み
+- 定期的に同期することで、親リポジトリを最新状態に保つ
 
 ### ワークフロー例
+
 ```yaml
 name: Sync Subtree Repositories
 
@@ -95,14 +108,16 @@ jobs:
 
 ### ポイント
 
-- MkDocsデプロイ： `mkdocs gh-deploy`でGitHub Pagesに公開。
-- Subtree同期： `git subtree pull` で子リポジトリを親に取り込み。
-- 複数子リポジトリ対応： `declare -A repos` で管理。
-- 定期実行： `cron` で自動化、workflow_dispatchで手動実行も可能。
+MkDocsデプロイ：mkdocs gh-deployでGitHub Pagesに公開。
+Subtree同期：git subtree pullで子リポジトリを親に取り込み。
+複数子リポジトリ対応：declare -A reposで管理。
+定期実行：cronで自動化、workflow_dispatchで手動実行も可能。
 
 ---
 
 ### 関連ページ
 
-- [親子リポジトリ構成](architecture.md)
-- [開発ルール](rules.md)
+- [architecture.md](architecture.md) - 親子リポジトリ構成の詳細
+- [index.md](index.md) - トップページ概要
+- [rules.md](rules.md) - ブランチ戦略・命名規則
+- [github-projects.md](github-projects.md) - GitHub Projects利用ガイド

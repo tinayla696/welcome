@@ -1,8 +1,7 @@
 site_name: Organization Welcome
 
 theme:
-  name: 'material'
-  language: 'ja'
+  name: material
 
 plugins:
   - search
