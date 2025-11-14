@@ -1,9 +1,41 @@
 site_name: Organization Welcome
+
+theme:
+  name: material
+  palette:
+    primary: 'blue'
+    accent: 'light blue'
+  language: 'ja'
+
+plugins:
+  - search
+
+markdown_extensions:
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_div_format
+  - toc:
+      permalink: true
+  - admonition
+  - pymdownx.details
+  - footnotes
+  - pymdownx.keys
+  - attr_list
+
 nav:
   - Home: index.md
   - Architecture: architecture.md
   - CI/CD: ci-cd.md
   - Rules: rules.md
   - GitHub Project: github-project.md
-theme:
-  name: material
+
+extra_css:
+  - https://unpkg.com/mermaid@8.0.0/dist/mermaid.css
+
+extra_javascript:
+  - https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js
+
+# (オプション) assets内の画像をコピーする設定 (通常は自動でコピーされますが、明示する場合)
+static_nav: []
