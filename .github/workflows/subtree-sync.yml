@@ -1,0 +1,39 @@
+name: Sync Subtree Repositories
+
+on:
+  schedule:
+    # 毎日午前3時に実行
+    - cron: '0 3 * * *'
+  workflow_dispatch: # 手動実行も可能
+
+jobs:
+  sync-subtrees:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout parent repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # subtree操作には完全な履歴が必要
+
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Sync child repositories
+        run: |
+          # 子リポジトリ一覧（prefixとURLを定義）
+          declare -A repos=(
+            ["app1"]="https://github.com/org/app1-repo.git"
+            ["app2"]="https://github.com/org/app2-repo.git"
+          )
+
+          for prefix in "${!repos[@]}"; do
+            url="${repos[$prefix]}"
+            echo "Syncing $prefix from $url"
+            git subtree pull --prefix="$prefix" "$url" main --squash
+          done
+
+      - name: Push changes
+        run: |
+          git push origin main

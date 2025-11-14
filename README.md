@@ -1,14 +1,26 @@
-# welcome
+# Welcome to Our GitHub Organization
 
-- - -
+このリポジトリは、組織の開発ガイドライン、リポジトリ構成、CI/CD方針をまとめた **Welcomeリポジトリ** です。
 
-## リポジトリブランチ作成ルール
+## ディレクトリ構成
 
-- 新規開発：　feature/****
-- 修正対応：　bugfix/****
-- 公開準備：　release/****
-- 緊急対応：　hotfix/*****
+```tree
+welcome-repo/
+├── docs/
+│   ├── index.md           # トップページ
+│   ├── architecture.md    # 親子リポジトリ構成
+│   ├── ci-cd.md           # GitHub Actions設定例
+│   └── rules.md           # ブランチ戦略・命名規則
+├── mkdocs.yml             # MkDocs設定
+├── README.md              # リポジトリ概要
+└── .github/workflows/
+    └── mkdocs-deploy.yml  # GitHub Pagesデプロイ用Actions
+```
 
-リポジトリのクローンは `develop` ブランチから行い、作業が完了したらプルリクエストを作成して `develop` ブランチにマージします。
+## 📚 内容
+- **Architecture**: 親子リポジトリ構成（Git Subtree利用）
+- **CI/CD**: GitHub Actionsによる自動化（MkDocsデプロイ、Subtree同期）
+- **Rules**: ブランチ戦略、命名規則、Pull Requestルート
 
-- - -
+## 🌐 ドキュメント
+GitHub Pagesで公開されます（自動デプロイ）。

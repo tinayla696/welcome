@@ -4,5 +4,6 @@ nav:
   - Architecture: architecture.md
   - CI/CD: ci-cd.md
   - Rules: rules.md
+  - GitHub Project: github-project.md
 theme:
   name: material
