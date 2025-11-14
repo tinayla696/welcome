@@ -10,14 +10,18 @@ welcome-repo/
 │   ├── index.md           # トップページ
 │   ├── architecture.md    # 親子リポジトリ構成
 │   ├── ci-cd.md           # GitHub Actions設定例
+│   ├── rules.md           # ブランチ戦略・命名規則
 │   └── rules.md           # ブランチ戦略・命名規則
 ├── src/
 │   └── (子リポジトリコード配置用)
 ├── mkdocs.yml             # MkDocs設定
 ├── README.md              # リポジトリ概要
 ├── requirements.txt      # MkDocs依存パッケージ
-└── .github/workflows/
-    └── mkdocs-deploy.yml  # GitHub Pagesデプロイ用Actions
+└── .github/
+    ├── workflows/
+    │   ├── mkdocs-deploy.yml  # GitHub Pagesデプロイ用Actions
+    │   └── sync-subtrees.yml  # 子リポジトリ同期用Actions
+    └── PULL_REQUEST_TEMPLATE.md  # Pull Requestテンプレート
 ```
 
 ## 📚 内容
