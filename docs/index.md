@@ -14,12 +14,12 @@
 
 ## 🏗 親子リポジトリ構成
 - **親リポジトリ**：プロジェクト単位
-  - MkDocsドキュメント
-  - GitHub Actions（CI/CD）
-  - 子リポジトリをGit Subtreeで取り込み
+    - MkDocsドキュメント
+    - GitHub Actions（CI/CD）
+    - 子リポジトリをGit Subtreeで取り込み
 - **子リポジトリ**：アプリケーション単位
-  - 独立管理
-  - 親リポジトリにコードを同期
+    - 独立管理
+    - 親リポジトリにコードを同期
 
 [詳細は architecture.md を参照。](architecture.md)
 
