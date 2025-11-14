@@ -24,3 +24,27 @@ welcome-repo/
 
 ## 🌐 ドキュメント
 GitHub Pagesで公開されます（自動デプロイ）。
+
+
+---
+
+## 🖥 スタンドアロンでの利用方法（ローカル確認）
+MkDocsをローカルで起動してドキュメントを確認できます。
+
+### 手順
+```bash
+# 仮想環境を作成
+python -m venv .venv
+
+# 仮想環境を有効化
+source .venv/bin/activate   # macOS/Linux
+# Windowsの場合: .venv\Scripts\activate
+
+# 必要なパッケージをインストール
+pip install -r requirements.txt
+
+# MkDocsサーバーを起動
+mkdocs serve
+
+# ブラウザで http://localhost:8000 を開く
+```
